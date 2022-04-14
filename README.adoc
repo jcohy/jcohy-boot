@@ -1,0 +1,22 @@
+= jcohy-boot
+响应式企业低代码开发平台
+
+== 技术栈
+
+
+后端
+
+- JDK11
+- Spring WebFlux
+- R2DBC
+- Project Reactor
+- Spring Data Jpa
+- Netty
+
+前端：
+
+- Vben-Admin
+- Vue3
+- Vite
+- Ant-Design-Vue
+- TypeScript

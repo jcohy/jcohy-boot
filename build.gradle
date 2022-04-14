@@ -1,0 +1,27 @@
+description = "jcohy-boot"
+
+configure(allprojects) { abjects ->
+
+	group = GROUP
+	version = VERSION
+
+	repositories {
+
+		maven { url = 'https://maven.aliyun.com/repository/central'}
+		maven { url = 'https://repo.spring.io/libs-milestone'}
+		maven { url = 'https://repo.spring.io/snapshot/'}
+		maven { url = 'https://oss.sonatype.org/content/repositories/snapshots/'}
+		mavenCentral()
+	}
+
+	configurations.all {
+		resolutionStrategy {
+			cacheChangingModulesFor 0, "minutes"
+			cacheDynamicVersionsFor 0, "minutes"
+		}
+	}
+
+	configurations {
+		compile.exclude module :'spring-boot-starter-tomcat'
+	}
+}
