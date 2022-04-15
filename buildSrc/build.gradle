@@ -1,0 +1,50 @@
+plugins {
+    id "java-gradle-plugin"
+}
+
+repositories {
+    //加上阿里云镜像
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+    gradlePluginPortal()
+    maven { url "https://repo.spring.io/release" }
+}
+
+dependencies {
+    implementation("org.asciidoctor:asciidoctor-gradle-jvm:3.3.2")
+    implementation("org.asciidoctor:asciidoctor-gradle-jvm-pdf:3.3.2")
+    implementation("com.jcohy.gradle:jcohy-java-convention:${jcohyJavaFormatVersion}")
+    implementation("org.apache.maven:maven-embedder:3.6.2")
+    testImplementation("org.assertj:assertj-core:3.11.1")
+    testImplementation("org.apache.logging.log4j:log4j-core:2.12.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.6.0")
+}
+
+//将src文件夹中的资源文件同时打包
+processResources {
+    from('src/main/java') {
+        include '**/*.xml'
+    }
+}
+
+gradlePlugin {
+    plugins {
+        docsPlugin {
+            id = "com.saga.docs"
+            implementationClass = "com.saga.boot.build.AsciidoctorDocsPlugins"
+        }
+        deployedPlugin {
+            id = "com.saga.module"
+            implementationClass = "com.saga.boot.build.SaganModulePlugin"
+        }
+        autoConfigurationPlugin {
+            id = "com.saga.auto-configuration"
+            implementationClass = "com.saga.boot.build.AutoConfigurationPlugin"
+        }
+    }
+}
+
+
+test {
+    useJUnitPlatform()
+}

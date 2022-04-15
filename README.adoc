@@ -4,19 +4,48 @@
 == 技术栈
 
 
-后端
+.后端
+|===
+| 技术栈 | 版本号
 
-- JDK11
-- Spring WebFlux
-- R2DBC
-- Project Reactor
-- Spring Data Jpa
-- Netty
+| JDK
+| 11
 
-前端：
+| Spring WebFlux
+|
 
-- Vben-Admin
-- Vue3
-- Vite
-- Ant-Design-Vue
-- TypeScript
+| Spring Security
+|
+
+| Spring Data Jpa
+|
+
+| Project Reactor
+|
+
+| Netty
+|
+
+| R2DBC
+|
+|===
+
+.前端
+|===
+| 技术栈 | 版本号
+
+| Vben-Admin
+|
+
+| Vue
+| 3
+
+| Vite
+|
+
+| Ant-Design-Vue
+|
+
+| TypeScript
+|
+|===
