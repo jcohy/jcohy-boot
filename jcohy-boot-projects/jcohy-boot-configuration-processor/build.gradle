@@ -1,0 +1,8 @@
+plugins {
+	id "com.jcohy.module"
+}
+
+description = "Jcohy Boot Annotation Processor Generation spring.factories and Java SPI file"
+
+dependencies {
+}

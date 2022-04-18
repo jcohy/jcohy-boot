@@ -6,8 +6,6 @@ import org.gradle.api.Project;
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.tasks.TaskAction;
 
-import java.util.function.Consumer;
-
 /**
  * @author Rob Winch
  */
@@ -19,12 +17,7 @@ public class GlobalLockTask extends DefaultTask {
 			throw new IllegalStateException("You just specify --write-locks argument");
 		}
 		writeLocksFor(taskProject);
-		taskProject.getSubprojects().forEach(new Consumer<Project>() {
-			@Override
-			public void accept(Project subproject) {
-				writeLocksFor(subproject);
-			}
-		});
+		taskProject.getSubprojects().forEach(this::writeLocksFor);
 	}
 
 	private void writeLocksFor(Project project) {
