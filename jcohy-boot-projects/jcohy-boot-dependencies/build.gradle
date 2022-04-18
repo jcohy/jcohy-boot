@@ -1,0 +1,16 @@
+plugins {
+	id 'java-platform'
+	id "com.jcohy.conventions"
+	id "com.jcohy.deployed"
+}
+
+javaPlatform {
+	allowDependencies()
+}
+
+dependencies {
+
+	constraints {
+
+	}
+}
