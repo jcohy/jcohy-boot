@@ -5,6 +5,4 @@ plugins {
 description = "Jcohy Boot Annotation Processor Generation spring.factories and Java SPI file"
 
 dependencies {
-
-	testImplementation(project(":jcohy-boot-test"))
 }
