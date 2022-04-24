@@ -1,0 +1,2 @@
+com.jcohy.boot.configuration.processor.JavaSpiServiceProcessor
+com.jcohy.boot.configuration.processor.SpringFactoriesProcessor

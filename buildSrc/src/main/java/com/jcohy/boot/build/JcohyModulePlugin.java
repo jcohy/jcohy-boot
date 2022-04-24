@@ -6,6 +6,7 @@ import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.Dependency;
 import org.gradle.api.plugins.JavaLibraryPlugin;
+import org.gradle.api.plugins.JavaPlugin;
 import org.gradle.api.plugins.PluginContainer;
 
 import com.jcohy.convention.conventions.ConventionsPlugin;
@@ -40,5 +41,7 @@ public class JcohyModulePlugin implements Plugin<Project> {
         project.getConfigurations().getByName("dependencyManagement", (dependencyManagement) -> {
             dependencyManagement.getDependencies().add(parent);
         });
+
+//		project.getDependencies().add(JavaPlugin.TEST_IMPLEMENTATION_CONFIGURATION_NAME, project.getDependencies().project(Collections.singletonMap("path","jcohy-boot-test")));
     }
 }
