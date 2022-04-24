@@ -23,7 +23,8 @@ package com.jcohy.boot.configuration.processor.annotations;
  */
 public @interface JavaSpiService {
 
-	Class<?>[] value();
+    Class<?>[] value();
 
-	String name() default "";
+    String name() default "";
+
 }

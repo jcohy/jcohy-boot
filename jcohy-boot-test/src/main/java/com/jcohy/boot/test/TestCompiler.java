@@ -17,95 +17,98 @@ import javax.tools.ToolProvider;
 /**
  * 描述: 包装 {@link JavaCompiler} ,在测试中更易使用.
  * <p>
- *     Copyright © 2022 <a href="https://www.jcohy.com" target= "_blank">https://www.jcohy.com</a>
+ * Copyright © 2022
+ * <a href="https://www.jcohy.com" target= "_blank">https://www.jcohy.com</a>
  * </p>
+ *
  * @author jiac
  * @version 2022.04.0 2022/4/22:19:44
  * @since 2022.04.0
  */
 public class TestCompiler {
-	/**
-	 * The default source directory.
-	 */
-	public static final File SOURCE_DIRECTORY = new File("src/test/java");
 
-	private final JavaCompiler compiler;
+    /**
+     * The default source directory.
+     */
+    public static final File SOURCE_DIRECTORY = new File("src/test/java");
 
-	private final StandardJavaFileManager fileManager;
+    private final JavaCompiler compiler;
 
-	private final File outputLocation;
+    private final StandardJavaFileManager fileManager;
 
-	public TestCompiler(File outputLocation) throws IOException {
-		this(ToolProvider.getSystemJavaCompiler(), outputLocation);
-	}
+    private final File outputLocation;
 
-	public TestCompiler(JavaCompiler compiler, File outputLocation) throws IOException {
-		this.compiler = compiler;
-		this.fileManager = compiler.getStandardFileManager(null, null, null);
-		this.outputLocation = outputLocation;
-		this.outputLocation.mkdirs();
-		Iterable<? extends File> temp = Collections.singletonList(this.outputLocation);
-		this.fileManager.setLocation(StandardLocation.CLASS_OUTPUT, temp);
-		this.fileManager.setLocation(StandardLocation.SOURCE_OUTPUT, temp);
-	}
+    public TestCompiler(File outputLocation) throws IOException {
+        this(ToolProvider.getSystemJavaCompiler(), outputLocation);
+    }
 
-	public static String sourcePathFor(Class<?> type) {
-		return type.getName().replace('.', '/') + ".java";
-	}
+    public TestCompiler(JavaCompiler compiler, File outputLocation) throws IOException {
+        this.compiler = compiler;
+        this.fileManager = compiler.getStandardFileManager(null, null, null);
+        this.outputLocation = outputLocation;
+        this.outputLocation.mkdirs();
+        Iterable<? extends File> temp = Collections.singletonList(this.outputLocation);
+        this.fileManager.setLocation(StandardLocation.CLASS_OUTPUT, temp);
+        this.fileManager.setLocation(StandardLocation.SOURCE_OUTPUT, temp);
+    }
 
-	public TestCompilationTask getTask(Collection<File> sourceFiles) {
-		Iterable<? extends JavaFileObject> javaFileObjects = this.fileManager.getJavaFileObjectsFromFiles(sourceFiles);
-		return getTask(javaFileObjects);
-	}
+    public static String sourcePathFor(Class<?> type) {
+        return type.getName().replace('.', '/') + ".java";
+    }
 
-	public TestCompilationTask getTask(Class<?>... types) {
-		Iterable<? extends JavaFileObject> javaFileObjects = getJavaFileObjects(types);
-		return getTask(javaFileObjects);
-	}
+    public TestCompilationTask getTask(Collection<File> sourceFiles) {
+        Iterable<? extends JavaFileObject> javaFileObjects = this.fileManager.getJavaFileObjectsFromFiles(sourceFiles);
+        return getTask(javaFileObjects);
+    }
 
-	private TestCompilationTask getTask(Iterable<? extends JavaFileObject> javaFileObjects) {
-		return new TestCompilationTask(
-				this.compiler.getTask(null, this.fileManager, null, null, null, javaFileObjects));
-	}
+    public TestCompilationTask getTask(Class<?>... types) {
+        Iterable<? extends JavaFileObject> javaFileObjects = getJavaFileObjects(types);
+        return getTask(javaFileObjects);
+    }
 
-	public File getOutputLocation() {
-		return this.outputLocation;
-	}
+    private TestCompilationTask getTask(Iterable<? extends JavaFileObject> javaFileObjects) {
+        return new TestCompilationTask(
+                this.compiler.getTask(null, this.fileManager, null, null, null, javaFileObjects));
+    }
 
-	private Iterable<? extends JavaFileObject> getJavaFileObjects(Class<?>... types) {
-		File[] files = new File[types.length];
-		for (int i = 0; i < types.length; i++) {
-			files[i] = getFile(types[i]);
-		}
-		return this.fileManager.getJavaFileObjects(files);
-	}
+    public File getOutputLocation() {
+        return this.outputLocation;
+    }
 
-	protected File getFile(Class<?> type) {
-		return new File(getSourceDirectory(), sourcePathFor(type));
-	}
+    private Iterable<? extends JavaFileObject> getJavaFileObjects(Class<?>... types) {
+        File[] files = new File[types.length];
+        for (int i = 0; i < types.length; i++) {
+            files[i] = getFile(types[i]);
+        }
+        return this.fileManager.getJavaFileObjects(files);
+    }
 
-	protected File getSourceDirectory() {
-		return SOURCE_DIRECTORY;
-	}
+    protected File getFile(Class<?> type) {
+        return new File(getSourceDirectory(), sourcePathFor(type));
+    }
 
-	/**
-	 * A compilation task.
-	 */
-	public static class TestCompilationTask {
+    protected File getSourceDirectory() {
+        return SOURCE_DIRECTORY;
+    }
 
-		private final CompilationTask task;
+    /**
+     * A compilation task.
+     */
+    public static class TestCompilationTask {
 
-		public TestCompilationTask(CompilationTask task) {
-			this.task = task;
-		}
+        private final CompilationTask task;
 
-		public void call(Processor... processors) {
-			this.task.setProcessors(Arrays.asList(processors));
-			if (!this.task.call()) {
-				throw new IllegalStateException("Compilation failed");
-			}
-		}
+        public TestCompilationTask(CompilationTask task) {
+            this.task = task;
+        }
 
-	}
+        public void call(Processor... processors) {
+            this.task.setProcessors(Arrays.asList(processors));
+            if (!this.task.call()) {
+                throw new IllegalStateException("Compilation failed");
+            }
+        }
+
+    }
 
 }

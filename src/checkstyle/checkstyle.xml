@@ -9,7 +9,7 @@
 		<property name="file" value="${config_loc}/checkstyle-suppressions.xml"/>
 	</module>
 	<module name="com.jcohy.checkstyle.JcohyChecks">
-		<property name="projectRootPackage" value="com.saga.boot"/>
+		<property name="projectRootPackage" value="com.jcohy.boot"/>
 		<property name="headerType" value="unchecked" />
 		<property name="style" value="jcohy" />
 	</module>
