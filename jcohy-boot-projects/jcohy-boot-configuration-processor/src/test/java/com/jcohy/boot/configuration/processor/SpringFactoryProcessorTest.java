@@ -65,8 +65,8 @@ public class SpringFactoryProcessorTest {
     }
 
     /**
-     * 预期结果：没有实现ApplicationListener接口的类不写入到spring.factories中.
-     * TestSagaApplicationListener.class,TestSagaApplicationContextInitializer.class,
+     * 预期结果：没有实现 ApplicationListener 接口的类不写入到spring.factories中.
+     * TestSpringApplicationListener.class,TestSpringApplicationContextInitializer.class,
      * @throws IOException
      */
     @Test
