@@ -28,6 +28,9 @@
 
 | R2DBC
 |
+
+| Spring Cloud Stream
+|
 |===
 
 .前端
