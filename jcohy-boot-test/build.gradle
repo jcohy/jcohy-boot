@@ -5,4 +5,6 @@ plugins {
 description = "Jcohy Boot Annotation Processor Generation spring.factories and Java SPI file"
 
 dependencies {
+
+	api("org.testcontainers:mongodb")
 }
