@@ -5,6 +5,7 @@
 <suppressions>
 	<suppress files="Test.*\.java" checks="MagicNumberCheck" />
 	<suppress files="[\\/]jcohy-boot-configuration-processor[\\/]" checks="AbstractClassNameCheck" />
+	<suppress files="[\\/]jcohy-boot-test[\\/]" checks="*" />
 	<suppress files="[\\/]src[\\/]test[\\/]java[\\/]" checks="SpringAvoidStaticImport" />
 	<suppress files="[\\/]src[\\/]test[\\/]java[\\/]" checks="NonEmptyAtclauseDescription" />
 </suppressions>

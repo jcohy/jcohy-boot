@@ -1,0 +1,10 @@
+plugins {
+	id "com.jcohy.module"
+}
+
+description = "Jcohy Boot Annotation Processor Generation spring.factories and Java SPI file"
+
+dependencies {
+	api("org.springframework.boot:spring-boot-starter-data-jpa")
+	api("io.projectreactor:reactor-core")
+}

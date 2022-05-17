@@ -20,6 +20,10 @@
 			<property name="requireSinceTag" value="true" />
 		</module>
 
+<!--		<module name="com.jcohy.checkstyle.check.JcohyAbbreviationAsWordInName">-->
+<!--			<property name="publicOnlySinceTags" value="true" />-->
+<!--			<property name="requireSinceTag" value="true" />-->
+<!--		</module>-->
 
 		<module name="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck">
 			<property name="ignoreHashCodeMethod" value="true"/>
