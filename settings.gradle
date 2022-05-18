@@ -5,5 +5,6 @@ include 'jcohy-boot-docs'
 include 'jcohy-boot-projects:jcohy-boot-configuration-processor'
 include 'jcohy-boot-projects:jcohy-boot-dependencies'
 include 'jcohy-boot-projects:jcohy-boot-jpa'
+include 'jcohy-boot-projects:jcohy-boot-launch'
 
 include 'jcohy-boot-test'

@@ -1,0 +1,10 @@
+plugins {
+	id "com.jcohy.module"
+	id "com.jcohy.auto-configuration"
+}
+
+description = "Add Spring Application Launcher Configuration"
+
+dependencies {
+	annotationProcessor project(":jcohy-boot-projects:jcohy-boot-configuration-processor")
+}
