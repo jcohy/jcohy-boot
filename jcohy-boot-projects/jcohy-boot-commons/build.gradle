@@ -1,0 +1,13 @@
+plugins {
+	id "com.jcohy.module"
+}
+
+description = "Jcohy Boot Commons Description"
+
+dependencies {
+//	api ("io.springfox:springfox-swagger2")
+//	api ("io.swagger:swagger-models")
+//	api ("org.springframework.boot:spring-boot-starter-validation")
+//	api ("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+//	implementation ("org.springframework.boot:spring-boot-starter-security")
+}
